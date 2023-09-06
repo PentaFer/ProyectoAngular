@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="mt-4">
+          <a [routerLink]="['/actualiza',indice]" style="text-decoration: none; color: green;">
+            {{indice+1}}: {{empleadoDeLista.nombre}} {{empleadoDeLista.apellido}} {{empleadoDeLista.cargo}} {{empleadoDeLista.salario}}
+          </a>
+        </div>
+        <app-caracteristicas-empleado-c  (caracteristicasEmpleados)="agregarCaracteristicas($event)"></app-caracteristicas-empleado-c>
+      <ul style="list-style: none;">
+        <li *ngFor="let caracteristica of arrayCaracteristicas">{{caracteristica}} </li>
+      </ul>
+      </div>
+    </div>
+  </div>
+
+
+  
