@@ -11,6 +11,8 @@ import { EmpleadosServiceService } from '../empleados-service.service';
 })
 export class ActualizaCoponentComponent {
 
+  accion:number;
+
   constructor(private route:ActivatedRoute,private router:Router, private _servicioEmpleados:ServicioEmpleadosService,private _service:EmpleadosServiceService){
 
   }
@@ -27,6 +29,8 @@ export class ActualizaCoponentComponent {
     this.cuadroApellido = empleado.apellido
     this.cuadroCargo = empleado.cargo
     this.cuadroSalario = empleado.salario
+
+    this.accion = parseInt(this.route.snapshot.queryParams['accion']);
 
   }
 
@@ -46,7 +50,7 @@ export class ActualizaCoponentComponent {
 
 
 
-  actualizarEmpleado() {
+ /* actualizarEmpleado() {
       let miEmpleado = new Empleado(this.cuadroNombre, this.cuadroApellido, this.cuadroCargo, this.cuadroSalario);
       //this._servicioEmpleados.muestraMensaje('Datos del empleado agregado: ' + miEmpleado.nombre + ' ' + miEmpleado.apellido);
       
@@ -54,6 +58,28 @@ export class ActualizaCoponentComponent {
   
       this.router.navigate([""])
     }
+    eliminarEmpleado(){
+      this._service.eliminarEmpleado(this.indice)
+      this.router.navigate([""])
+
+    }*/
+
+
+    actualizarEmpleado() {
+
+      if(this.accion == 1){
+        let miEmpleado = new Empleado(this.cuadroNombre, this.cuadroApellido, this.cuadroCargo, this.cuadroSalario);
+        //this._servicioEmpleados.muestraMensaje('Datos del empleado agregado: ' + miEmpleado.nombre + ' ' + miEmpleado.apellido);
+        
+        this._service.actualizarEmpleado(this.indice,miEmpleado);
+    
+        this.router.navigate([""])
+      }else{
+        this._service.eliminarEmpleado(this.indice)
+        this.router.navigate([""])
+      }
+    }
+
   }
   
 

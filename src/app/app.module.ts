@@ -13,6 +13,7 @@ import { QuienesComponentComponent } from './quienes-component/quienes-component
 import { ContactoComponentComponent } from './contacto-component/contacto-component.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ActualizaCoponentComponent } from './actualiza-coponent/actualiza-coponent.component';
+import { ErorPersonalizadoComponentComponent } from './eror-personalizado-component/eror-personalizado-component.component';
 
 
 const appRoutes:Routes=[
@@ -20,7 +21,8 @@ const appRoutes:Routes=[
   {path:'proyectos', component:ProyectosComponentComponent},
   {path:'quienes',component:QuienesComponentComponent},
   {path:'contacto', component:ContactoComponentComponent},
-  {path:'actualiza/:id', component:ActualizaCoponentComponent}
+  {path:'actualiza/:id', component:ActualizaCoponentComponent},
+  {path:'**', component:ErorPersonalizadoComponentComponent}
 ];
 
 @NgModule({
@@ -32,7 +34,8 @@ const appRoutes:Routes=[
     ProyectosComponentComponent,
     QuienesComponentComponent,
     ContactoComponentComponent,
-    ActualizaCoponentComponent
+    ActualizaCoponentComponent,
+    ErorPersonalizadoComponentComponent
   ],
   imports: [
     BrowserModule,FormsModule, RouterModule.forRoot(appRoutes)
